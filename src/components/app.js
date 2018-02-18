@@ -24,7 +24,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div className="navbar"></div>
+        <div className="navbar">
+          <img className="logo" src="src/clarovideo-logo.svg"></img>
+        </div>
         <ul>
           { this.renderMoviesList() }
         </ul>
