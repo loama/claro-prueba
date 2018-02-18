@@ -1,16 +1,16 @@
-import { SHOW_USERS } from '../actions'
+import { SHOW_MOVIES } from '../actions'
 
 const initialState = {
     list: []
 }
 
-export function showUsers(state = initialState, action) {
-    
+export function showMovies(state = initialState, action) {
+
     switch (action.type) {
-        case SHOW_USERS:
+        case SHOW_MOVIES:
             return Object.assign({}, state, {list: action.payload})
         default:
-            return state 
+            return state
     }
-    
+
 }

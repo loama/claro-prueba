@@ -1,43 +1,33 @@
 import React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux'
-import { showUsers } from '../actions'
-import { Table } from 'react-bootstrap'
+import { showMovies } from '../actions'
 
 class App extends Component {
-  
+
   componentWillMount() {
-    this.props.showUsers()
+    this.props.showMovies()
   }
-  
-  renderUsersList() {
-    return this.props.users.map((user) => {
+
+  renderMoviesList() {
+    return this.props.movies.map((movie) => {
       return (
-        <tr key={user.id}>
-          <td>{user.id}</td>
-          <td>{user.name}</td>
-          <td>{user.email}</td>
-        </tr>
+        <li key={movie.id}>
+          <span>{movie.title} </span>
+          <span>{movie.name} </span>
+          <span>{movie.email} </span>
+        </li>
       )
     })
   }
-  
+
   render() {
     return (
       <div>
-        <h2>Users List</h2>
-        <Table responsive>
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            { this.renderUsersList() }
-          </tbody>
-        </Table>        
+        <h2>Movies List</h2>
+        <div>
+          { this.renderMoviesList() }
+        </div>
       </div>
     );
   }
@@ -45,8 +35,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    users: state.user.list
+    movies: state.movie.list
   }
 }
 
-export default connect(mapStateToProps, { showUsers })(App)
+export default connect(mapStateToProps, { showMovies })(App)
