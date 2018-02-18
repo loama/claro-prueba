@@ -1,6 +1,7 @@
 html, body {
-  background: black;
+  background: #101010;
   color: white;
+  font-family: Arial;
 }
 
 .navbar {
@@ -8,20 +9,32 @@ html, body {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 72px;
+  height: 56px;
   background: black;
-  border-bottom: 1px solid rgba(128,128,128,0.25);
   z-index: 10000;
 }
 
 .logo {
-  height: 56px;
-  margin: 8px 16px;
+  height: 24px;
+  margin: 12px 16px;
+}
+
+.search {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  outline: none;
+  border: 1px solid #424242;
+  background: black;
+  border-radius: 4px;
+  height: 36px;
+  color: #d0d0d0;
+  padding-left: 16px;
 }
 
 ul {
   list-style: none;
-  padding: 100px 0 0 0;
+  padding: 64px 0 0 0;
   max-width: calc(100vw - 32px);
   margin: 0 16px;
   text-align: center;
@@ -32,18 +45,42 @@ li {
   width: 125px;
   height: 188px;
   background: gray;
-  margin: 8px;
+  margin: 24px 2px;
   display: inline-block;
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 li div {
   position: absolute;
 }
 
+.hover {
+  opacity: 0;
+  transition: opacity 0.3s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 101%;
+  background: rgba(20,20,20,0.6);
+}
+
 @media screen and (min-width:680px) {
   li {
-    width: 290px;
-    height: 163px;
+    width: 232px;
+    height: 130px;
+    max-width: 232px;
+    max-height: 130px;
+  }
+
+  li img {
+    width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+  }
+
+  li:hover .hover {
+    opacity: 1;
   }
 }

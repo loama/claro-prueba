@@ -6,19 +6,25 @@ import { showMovies } from '../actions'
 class App extends Component {
 
   componentWillMount() {
-    this.props.showMovies()
+    this.props.showMovies('firstload')
   }
 
   renderMoviesList() {
     return this.props.movies.map((movie) => {
       return (
-        <li key={movie.id}>
-          <div>{movie.title} </div>
-          <div>{movie.name} </div>
-          <div>{movie.email} </div>
+        <li key={movie.title}>
+          <img src={movie.image_small}></img>
+          <div className="hover">
+            <div>{movie.title} </div>
+          </div>
         </li>
       )
     })
+  }
+
+  handleChange(event) {
+    //console.log(event.target.value);
+    this.props.showMovies(event.target.value)
   }
 
   render() {
@@ -26,6 +32,7 @@ class App extends Component {
       <div>
         <div className="navbar">
           <img className="logo" src="src/clarovideo-logo.svg"></img>
+          <input className="search" type="text" placeholder="buscar..." onChange={this.handleChange.bind(this)}></input>
         </div>
         <ul>
           { this.renderMoviesList() }
