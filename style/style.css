@@ -2,6 +2,8 @@ html, body {
   background: #101010;
   color: white;
   font-family: Arial;
+  max-width: 100%;
+  max-width: 100vw;
 }
 
 .navbar {
@@ -12,6 +14,18 @@ html, body {
   height: 56px;
   background: black;
   z-index: 10000;
+}
+
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  min-width: 100%;
+  min-height: 100%;
+  background: black;
+  z-index: 10001;
 }
 
 .logo {
@@ -81,6 +95,52 @@ li div {
   }
 
   li:hover .hover {
+    opacity: 1;
+  }
+}
+
+/* PRELOADER */
+
+.loader-overlay {
+  transition: opacity 1s;
+}
+
+.preloader-1 {
+  margin: 30vh auto 0;
+  width: 66px;
+  height: 12px;
+}
+
+.preloader-1 .logo {
+  margin-left: -20px;
+}
+
+.preloader-1 .line {
+  width: 1px;
+  height: 12px;
+  background: #D93025;
+  margin: 0 3px;
+  display: inline-block;
+  animation: opacity-1 1000ms infinite ease-in-out;
+}
+
+.preloader-1 .line-1 { animation-delay: 800ms; }
+.preloader-1 .line-2 { animation-delay: 600ms; }
+.preloader-1 .line-3 { animation-delay: 400ms; }
+.preloader-1 .line-4 { animation-delay: 200ms; }
+.preloader-1 .line-6 { animation-delay: 200ms; }
+.preloader-1 .line-7 { animation-delay: 400ms; }
+.preloader-1 .line-8 { animation-delay: 600ms; }
+.preloader-1 .line-9 { animation-delay: 800ms; }
+
+@keyframes opacity-1 {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
     opacity: 1;
   }
 }

@@ -18,6 +18,12 @@ export function showMovies(action) {
             .then((response) => {
               console.log(response.data.response.groups)
               dispatch( { type: SHOW_MOVIES, payload: response.data.response.groups } )
+              // preloader
+              var loaderOverlay = document.getElementById('loader-overlay')
+              loaderOverlay.style.opacity = 0
+              setTimeout(function () {
+                loaderOverlay.style.display = 'none'
+              }, 1000)
               allMovies = response.data.response.groups
             })
       }
