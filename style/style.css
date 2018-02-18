@@ -1,0 +1,43 @@
+html, body {
+  background: black;
+  color: white;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 72px;
+  background: black;
+  border-bottom: 1px solid rgba(128,128,128,0.25);
+  z-index: 10000;
+}
+
+ul {
+  list-style: none;
+  padding: 100px 0 0 0;
+  max-width: calc(100vw - 32px);
+  margin: 0 16px;
+  text-align: center;
+}
+
+li {
+  position: relative;
+  width: 125px;
+  height: 188px;
+  background: gray;
+  margin: 8px;
+  display: inline-block;
+}
+
+li div {
+  position: absolute;
+}
+
+@media screen and (min-width:680px) {
+  li {
+    width: 290px;
+    height: 163px;
+  }
+}

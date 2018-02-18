@@ -13,9 +13,9 @@ class App extends Component {
     return this.props.movies.map((movie) => {
       return (
         <li key={movie.id}>
-          <span>{movie.title} </span>
-          <span>{movie.name} </span>
-          <span>{movie.email} </span>
+          <div>{movie.title} </div>
+          <div>{movie.name} </div>
+          <div>{movie.email} </div>
         </li>
       )
     })
@@ -24,10 +24,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h2>Movies List</h2>
-        <div>
+        <div className="navbar"></div>
+        <ul>
           { this.renderMoviesList() }
-        </div>
+        </ul>
       </div>
     );
   }
