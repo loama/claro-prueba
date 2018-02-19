@@ -13,7 +13,7 @@ html, body {
   width: 100vw;
   height: 56px;
   background: black;
-  z-index: 10000;
+  z-index: 9000;
 }
 
 .loader-overlay {
@@ -99,6 +99,59 @@ li div {
   }
 }
 
+.modal {
+  position: fixed;
+  top: 200px;
+  left: calc(50vw - 400px);
+  width: 800px;
+  height: 300px;
+  max-width: calc(100vw - 32px);
+  background: black;
+  border-radius: 4px;
+  z-index: 9003;
+  box-shadow: 0 1px 3px 0 #000;
+  color: #656565;
+  transform: translate3d(0, -3000px, 0);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vw;
+  background: rgba(15,15,15,0.9);
+  z-index: 9002;
+  transform: translate3d(0, -3000px, 0);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.modal img {
+  float: left;
+  margin-right: 8px;
+  border-radius: 4px 0 0 4px;
+}
+
+.modal .title {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  margin: 8px;
+}
+
+.modal .description {
+  padding-left: 216px;
+  margin-bottom: 8px;
+}
+
+.modal .tag {
+  color: #424242;
+  margin-bottom: 8px;
+  line-height: 21px;
+}
 /* PRELOADER */
 
 .loader-overlay {
