@@ -15,7 +15,13 @@ export function showMovies(action) {
         dispatch( { type: SHOW_MOVIES, payload: allMovies } )
       } else if (action.type == 'filter') { // something in search, should filter
         // console.log(filterItems(action))
-        dispatch( { type: SHOW_MOVIES, payload: filterItems(action.value) } )
+        var filtered = filterItems(action.value)
+        if (filtered.length == 0) {
+          document.getElementById('no-movies').style.display = 'block'
+        } else {
+          document.getElementById('no-movies').style.display = 'none'
+        }
+        dispatch( { type: SHOW_MOVIES, payload: filtered } )
       } else {
         axios.get('https://mfwkweb-api.clarovideo.net//services/content/list?api_version=v5.8&authpn=webclient&authpt=tfg1h3j4k6fd7&format=json&region=mexico&device_id=web&device_category=web&device_model=web&device_type=web&device_manufacturer=generic&HKS=fv0nhac8sroar1e2h3jdblhjf6&quantity=40&order_way=DESC&order_id=200&level_id=GPS&from=0&node_id=9869')
             .then((response) => {

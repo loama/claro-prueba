@@ -137,6 +137,7 @@ class App extends Component {
         </div>
         <ul>
           { this.renderMoviesList() }
+          <div id="no-movies" className="no-movies"> No se encontraron películas </div>
         </ul>
       </div>
     );

@@ -54,6 +54,10 @@ ul {
   text-align: center;
 }
 
+.no-movies {
+  display: none;
+}
+
 li {
   position: relative;
   width: 125px;

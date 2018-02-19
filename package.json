@@ -6,8 +6,6 @@
   "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
-    "test:watch": "npm run test -- --watch",
     "build": "webpack --config webpack.prod.js"
   },
   "author": "",
@@ -19,6 +17,7 @@
     "babel-preset-react": "^6.1.18",
     "chai": "^3.5.0",
     "chai-jquery": "^2.0.0",
+    "cypress": "^2.0.2",
     "jquery": "^2.2.1",
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
@@ -30,6 +29,7 @@
     "axios": "^0.11.0",
     "babel-preset-stage-1": "^6.1.18",
     "enzyme": "^3.3.0",
+    "enzyme-adapter-react-14": "^1.0.5",
     "enzyme-adapter-react-16": "^1.1.1",
     "fetch-mock": "^6.0.0",
     "lodash": "^3.10.1",
