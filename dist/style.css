@@ -58,7 +58,7 @@ li {
   position: relative;
   width: 125px;
   height: 188px;
-  background: #424242;
+  background: gray;
   margin: 24px 2px;
   display: inline-block;
   cursor: pointer;

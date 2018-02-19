@@ -13,5 +13,4 @@ export function showMovies(state = initialState, action) {
         default:
             return state
     }
-
 }

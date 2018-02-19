@@ -2,6 +2,7 @@ import React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux'
 import { showMovies } from '../actions'
+import { showModal } from '../actions'
 
 class App extends Component {
 
@@ -13,7 +14,8 @@ class App extends Component {
     return this.props.movies.map((movie) => {
       return (
         <li key={movie.title} onClick={() => this.openModal(movie.id)}>
-          <img src={movie.image_small}></img>
+          <img className="big" src={movie.image_small}></img>
+          <img className="small" src={movie.image_medium}></img>
           <div className="hover">
             <div>{movie.title} </div>
           </div>
@@ -22,14 +24,70 @@ class App extends Component {
     })
   }
 
+  renderModal() {
+      return (
+        <div>
+          <div className="beforeLoad"></div>
+          <img className="big" src={this.props.modal.val.image_medium}></img>
+          <img className="small" src={this.props.modal.val.image_still}></img>
+          <div className="title"> {this.props.modal.val.title} </div>
+          <div className="description"> {this.props.modal.val.description_large} </div>
+          <div className="rating_code"> {this.props.modal.val.rating_code} </div>
+          <div> <span className="tag">Título original:</span> {this.props.modal.val.title_original} </div>
+        </div>
+      )
+  }
+
+  renderModalActors() {
+    return this.props.modal.extendedModal.roles[0].talents.talent.map((actor) => {
+      return (
+        <span className="info" key={actor.id}> {actor.name} {actor.surname}, </span>
+      )
+    })
+  }
+
+  renderModalDirector() {
+    return this.props.modal.extendedModal.roles[1].talents.talent.map((director) => {
+      return (
+        <span className="info" key={director.id}> {director.name} {director.surname} </span>
+      )
+    })
+    /* </span> {this.props.modal.extendedModal.roles.id} </div>
+    <div> <span className="tag">Director:</span> </div>
+    <div> <span className="tag">Escritor:</span> </div>
+    <div> <span className="tag">Productor:</span> </div>
+    <div> <span className="tag">Género:</span> </div> */
+  }
+
+  renderModalWriter() {
+    return this.props.modal.extendedModal.roles[1].talents.talent.map((writer) => {
+      return (
+        <span className="info" key={writer.id}> {writer.name} {writer.surname} </span>
+      )
+    })
+  }
+
+  renderModalProducer() {
+    return this.props.modal.extendedModal.roles[1].talents.talent.map((producer) => {
+      return (
+        <span className="info" key={producer.id}> {producer.name} {producer.surname} </span>
+      )
+    })
+  }
+
   handleChange(event) {
     //console.log(event.target.value);
-    this.props.showMovies(event.target.value)
+    var action = {
+      value: event.target.value,
+      type: 'filter'
+    }
+    this.props.showMovies(action)
   }
 
   openModal(modal) {
-    console.log(modal)
-    //this.props.showModal(modal)
+    // console.log(modal)
+    // console.log(this)
+    this.props.showModal(modal)
     document.getElementById('modal').style.transform = 'translate3d(0, 0, 0)'
     document.getElementById('modalOverlay').style.transform = 'translate3d(0, 0, 0)'
     setTimeout(function () {
@@ -45,6 +103,7 @@ class App extends Component {
       document.getElementById('modal').style.transform = 'translate3d(0, -3000px, 0)'
       document.getElementById('modalOverlay').style.transform = 'translate3d(0, -3000px, 0)'
     }, 400)
+    this.props.showModal('empty')
   }
 
   render() {
@@ -65,17 +124,13 @@ class App extends Component {
           </div>
         </div>
         <div className="modal" id="modal">
-          <img src="https://clarovideocdn9.clarovideo.net/PELICULAS/BUFFYTHEVAMPIRESLAYER/EXPORTACION_WEB/SS/BUFFYTHEVAMPIRESLAYERWVERTICAL.jpg?size=200x300"></img>
-          <div className="title"> La caja </div>
-          <div className="description"> Los Lewis son una familia normal pero lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis nibh mollis, tincidunt sapien et, congue enim. Quisque sed augue erat. Aliquam diam velit, porta sed feugiat vel, scelerisque</div>
-          <div> <span className="tag">Actor:</span> </div>
-          <div> <span className="tag">Director:</span> </div>
-          <div> <span className="tag">Escritor:</span> </div>
-          <div> <span className="tag">Productor:</span> </div>
-          <div> <span className="tag">Género:</span> </div>
-          <div> <span className="tag">Título original:</span> </div>
+          { this.renderModal() }
+          <div className="tag">Actor: { this.renderModalActors() } </div>
+          <div className="tag">Director: { this.renderModalDirector() } </div>
+          <div className="tag">Escritor: { this.renderModalWriter() } </div>
+          <div className="tag">Productor: { this.renderModalProducer() } </div>
         </div>
-        <div className="modalOverlay" id="modalOverlay" onClick={this.hideModal}></div>
+        <div className="modalOverlay" id="modalOverlay" onClick={() => this.hideModal()}></div>
         <div className="navbar">
           <img className="logo" src="src/clarovideo-logo.svg"></img>
           <input className="search" type="text" placeholder="buscar..." onChange={this.handleChange.bind(this)}></input>
@@ -90,8 +145,9 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    movies: state.movie.list
+    movies: state.movie.list,
+    modal: state.modal
   }
 }
 
-export default connect(mapStateToProps, { showMovies })(App)
+export default connect(mapStateToProps, { showMovies, showModal })(App)
