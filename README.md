@@ -1,5 +1,5 @@
 # claro-prueba
-This repo contains a sample **react** project using **redux** and using **Claro Video** api.
+This repo contains a sample **react** project using **redux** and **Claro Video** api to show a list of science fiction movies with search functionality and details showed after click, inside a modal.
 
 You need npm to run this project.
 https://nodejs.org/en/
@@ -8,7 +8,7 @@ https://nodejs.org/en/
 * `cd claro-react`
 * `npm install`
 * `yarn start`
-* _open localhost:8080_
+* _open in your browser_ [localhost:8080]
 
 ## Run Tests
 * `cd claro-react`
