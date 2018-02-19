@@ -54,11 +54,15 @@ ul {
   text-align: center;
 }
 
+.no-movies {
+  display: none;
+}
+
 li {
   position: relative;
   width: 125px;
   height: 188px;
-  background: gray;
+  background: #424242;
   margin: 24px 2px;
   display: inline-block;
   cursor: pointer;
@@ -226,6 +230,7 @@ li div {
     height: 130px;
     max-width: 232px;
     max-height: 130px;
+    text-align: left;
   }
 
   li img {
@@ -245,6 +250,36 @@ li div {
   li:hover .hover {
     opacity: 1;
   }
+
+  li p {
+    max-width: calc(100% - 16px);
+  }
+  
+  li .text {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    height: auto;
+    width: 100%;
+  }
+
+  li .title {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  li .description {
+    font-size: 14px;
+  }
+
+  li img.icon {
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    top: -32px;
+    left: 100px;
+  }
+
 }
 
 @media screen and (max-width: 800px) {
@@ -260,7 +295,7 @@ li div {
   }
 
   .modal {
-    top: 100px;
+    top: 50px;
     height: auto;
     width: calc(100vw - 64px);
     left: 32px;

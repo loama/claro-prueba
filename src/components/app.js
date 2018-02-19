@@ -17,7 +17,10 @@ class App extends Component {
           <img className="big" src={movie.image_small}></img>
           <img className="small" src={movie.image_medium}></img>
           <div className="hover">
-            <div>{movie.title} </div>
+            <div className="text">
+              <p className="title">{movie.title} </p>
+              <p className="description">{movie.description} </p>
+            </div>
           </div>
         </li>
       )
